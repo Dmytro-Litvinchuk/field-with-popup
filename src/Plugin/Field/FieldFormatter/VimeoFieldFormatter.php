@@ -54,6 +54,7 @@ class VimeoFieldFormatter extends FormatterBase {
     $height = $this->getSetting('height');
     foreach ($items as $delta => $item) {
       $element[$delta] = [
+        /**
         '#type' => 'inline_template',
         '#template' => '<iframe width="{{ width }}" height="{{ height }}"
           src="{{ url }}" class="pop-up" hidden></iframe>',
@@ -62,17 +63,11 @@ class VimeoFieldFormatter extends FormatterBase {
           'width' => $width,
           'height' => $height,
         ],
-        /**'#attributes' => [
-          // Add class.
-          'class' => [
-            'popup',
-          ],
-          // Hide container.
-          'style' => [
-            'display:none;',
-          ],
-        ],
          */
+        '#theme' => 'vimeo_video_formatter',
+        '#url' => $item->value,
+        '#width' => $width,
+        '#height' => $height,
       ];
     }
     return $element;
