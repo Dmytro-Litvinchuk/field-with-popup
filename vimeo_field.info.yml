@@ -1,0 +1,7 @@
+name: 'Vimeo field'
+type: module
+description: 'Custom field vimeo video'
+core: 8.x
+package: Custom
+dependencies:
+  - field
