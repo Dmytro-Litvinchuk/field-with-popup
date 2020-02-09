@@ -55,18 +55,26 @@ class VimeoFieldFormatter extends FormatterBase {
     foreach ($items as $delta => $item) {
       $element[$delta] = [
         '#type' => 'inline_template',
-        '#template' => '<iframe width="{{ width }}" height="{{ height }}" src="{{ url }}"></iframe>',
+        '#template' => '<iframe width="{{ width }}" height="{{ height }}"
+          src="{{ url }}" class="pop-up" hidden></iframe>',
         '#context' => [
           'url' => $item->value,
           'width' => $width,
           'height' => $height,
         ],
+        /**'#attributes' => [
+          // Add class.
+          'class' => [
+            'popup',
+          ],
+          // Hide container.
+          'style' => [
+            'display:none;',
+          ],
+        ],
+         */
       ];
     }
-    $element['test'] = [
-      '#type' => 'textfield',
-      '#title' => 'My List',
-    ];
     return $element;
   }
 
