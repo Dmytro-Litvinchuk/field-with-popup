@@ -23,8 +23,9 @@ class VimeoFieldFormatter extends FormatterBase {
    */
   public static function defaultSettings() {
     return [
-      'width' => '560',
-      'height' => '315',
+      'width' => '640',
+      'height' => '360',
+      'format' => 'default',
     ] + parent::defaultSettings();
   }
 
@@ -42,6 +43,15 @@ class VimeoFieldFormatter extends FormatterBase {
       '#title' => t('Vimeo video height'),
       '#default_value' => $this->getSetting('height'),
     ];
+    $elements['format'] = [
+      '#title' => $this->t('Player format'),
+      '#type' => 'select',
+      '#options' => [
+        'default' => $this->t('default'),
+        'pop-up' => $this->t('pop-up'),
+      ],
+      '#default_value' => $this->getSetting('format'),
+    ];
     return $elements;
   }
 
@@ -52,12 +62,14 @@ class VimeoFieldFormatter extends FormatterBase {
     $element = [];
     $width = $this->getSetting('width');
     $height = $this->getSetting('height');
+    $format = $this->getSetting('format');
     foreach ($items as $delta => $item) {
       $element[$delta] = [
         '#theme' => 'vimeo_video_formatter',
         '#url' => $item->value,
         '#width' => $width,
         '#height' => $height,
+        '#format' => $format,
       ];
     }
     return $element;
@@ -67,7 +79,8 @@ class VimeoFieldFormatter extends FormatterBase {
     $summary = [];
     $settings = $this->getSettings();
     if (!empty($settings['width']) && !empty($settings['height'])) {
-      $summary[] = t('Video size: @width x @height', ['@width' => $settings['width'], '@height' => $settings['height']]);
+      $summary[] = t('Video size: @width x @height </br> Player format: @format',
+        ['@width' => $settings['width'], '@height' => $settings['height'], '@format' => $settings['format']]);
     }
     else {
       $summary[] = t('Define video size');

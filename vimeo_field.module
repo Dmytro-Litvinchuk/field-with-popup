@@ -6,7 +6,7 @@
 function vimeo_field_theme($existing, $type, $theme, $path) {
   return [
     'vimeo_video_formatter' => [
-      'variables' => ['width' => NULL, 'height' => NULL, 'url' => NULL],
+      'variables' => ['width' => NULL, 'height' => NULL, 'format' => NULL, 'url' => NULL],
     ],
   ];
 }

@@ -1,5 +1,14 @@
-<div class="pop-up" hidden = "hidden">
-  <iframe src="{{ url }}" width="{{ width }}" height="{{ height }}" frameborder="0"
-          allow="autoplay; fullscreen" allowfullscreen>
-  </iframe>
-</div>
+{% if format == "default" %}
+  <div class="default-video">
+    <video width="{{ width }}" height="{{ height }}" controls>
+      <source src="{{ url }}" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+{% elseif format == "pop-up" %}
+  <div class="pop-up" hidden = "hidden">
+    <iframe src="{{ url }}" width="{{ width }}" height="{{ height }}" frameborder="0"
+            allow="autoplay; fullscreen" allowfullscreen>
+    </iframe>
+  </div>
+{% endif %}
