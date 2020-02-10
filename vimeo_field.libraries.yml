@@ -3,4 +3,4 @@ popup:
     js/custom.js: {}
   dependencies:
     - core/jquery
-    - core/drupal.dialog.ajax
+    - core/drupal.dialog
