@@ -48,4 +48,26 @@ class VimeoFieldWidget extends WidgetBase {
     }
   }
 
+  // NOT WORKING =(
+  /**
+  public static function defaultSettings() {
+    return [
+      'format' => 'default',
+    ] + parent::defaultSettings();
+  }
+
+  public function settingsForm(array $form, FormStateInterface $form_state) {
+    $element['format'] = [
+      '#title' => $this->t('Player format'),
+      '#type' => 'select',
+      '#options' => [
+        'default' => $this->t('default'),
+        'pop-up' => $this->t('pop-up'),
+      ],
+      '#default_value' => $this->getSetting('format'),
+    ];
+    return $element;
+  }
+   */
+
 }

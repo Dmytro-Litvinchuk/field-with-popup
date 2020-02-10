@@ -33,6 +33,7 @@ class VimeoFieldFormatter extends FormatterBase {
    * @inheritDoc
    */
   public function settingsForm(array $form, FormStateInterface $form_state) {
+    $elements = [];
     $elements['width'] = [
       '#type' => 'number',
       '#title' => t('Vimeo video width'),

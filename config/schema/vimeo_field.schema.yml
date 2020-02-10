@@ -1,0 +1,29 @@
+field.field_settings.vimeo_field:
+  type: mapping
+  label: 'Video Vimeo type'
+  mapping:
+    format:
+      type: select
+      label: 'Player format'
+
+field.widget.settings.vimeo_field_widget:
+  type: mapping
+  label: 'Video Vimeo widget'
+  mapping:
+    format:
+      type: select
+      label: 'Player format'
+
+field.formatter.settings.vimeo_filed_formatter:
+  type: mapping
+  label: 'Video Vimeo formatter'
+  mapping:
+    height:
+      type: number
+      label: 'Height video'
+    width:
+      type: number
+      label: 'Width video'
+    format:
+      type: select
+      label: 'Player format'

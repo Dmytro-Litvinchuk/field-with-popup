@@ -2,14 +2,13 @@
 
 namespace Drupal\vimeo_field\Plugin\Field\FieldType;
 
-use Drupal\Core\Annotation\Translation;
-use Drupal\Core\Field\Annotation\FieldType;
 use Drupal\Core\Field\FieldItemBase;
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\TypedData\DataDefinition;
 
 /**
- * Plugin implemetation of the 'vimeo_field'
+ * Plugin implemetation of the 'vimeo_field'.
  *
  * @FieldType(
  *   id = "vimeo_field",
@@ -53,6 +52,32 @@ class VimeoFieldItem extends FieldItemBase {
     $properties['value'] = DataDefinition::create('string')
       ->setLabel(t('Vimeo video URL'));
     return $properties;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function defaultFieldSettings() {
+    return [
+      'format' => 'default',
+    ] + parent::defaultFieldSettings();
+  }
+
+  /**
+   * @inheritDoc
+   */
+  public function fieldSettingsForm(array $form, FormStateInterface $form_state) {
+    $element = [];
+    $element['format'] = [
+      '#title' => $this->t('Player format'),
+      '#type' => 'select',
+      '#options' => [
+        'default' => $this->t('default'),
+        'pop-up' => $this->t('pop-up'),
+      ],
+      '#default_value' => $this->getSetting('format'),
+    ];
+    return $element;
   }
 
 }
