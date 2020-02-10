@@ -6,7 +6,7 @@
         $(".field--name-field-url-video").hide();
         $(".field--name-field-img img").css("cursor", "pointer");
         $(".field--name-field-img").click(function (){
-          $(".pop-up").once("popped").each(function (i, popupElement) {
+          $(".pop-up").each(function (i, popupElement) {
             var myPopup = Drupal.dialog(popupElement, {width: "auto"});
             myPopup.showModal();
           });
